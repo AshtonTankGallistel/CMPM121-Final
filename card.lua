@@ -114,7 +114,6 @@ end
 
 --what happens to the card when dropped by the mouse. Parameter is the object it was dropped onto, nil if no object
 function CardClass:onMouseRelease(dropObject)
-  print("mouseReleased...")
   self.heldBy.grabbedObject = nil
   self.heldBy = nil
   --pop card from prev object if dropped into new object
@@ -127,7 +126,6 @@ function CardClass:onMouseRelease(dropObject)
     oldObject = self.objectLocation
     self.objectLocation:remove(self)
     oldObject:updateLocations()
-    print("Pulled from old!")
   end
   --Put card into new object (want to do regardless of if they had an object previously)
   if dropObject ~= nil then
@@ -137,12 +135,10 @@ function CardClass:onMouseRelease(dropObject)
     end
     --then properly insert
     dropObject:insert(self)
-    print("Put into new!")
   end
   --update object's location stuff, regardless of current situation.
   if self.objectLocation ~= nil then
     self.objectLocation:updateLocations()
-    print("updated current location!")
   end
 end
 

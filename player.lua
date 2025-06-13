@@ -51,11 +51,8 @@ function PlayerClass:runAI(locationList)
     if curCard.cost <= self.mana - self.spendingMana then
       while #playableLocations > 0 do
         local curHolder = table.remove(playableLocations, math.random(1,#playableLocations))
-        print("curHolder" .. tostring(curHolder))
         local locID = 1+math.floor(curHolder/4)
         local holdID = 1+curHolder%4
-        print(locID)
-        print(holdID)
         if locationList[locID].p1CardHolders[holdID].myCard == nil then
           self.myhand:remove(curCard)
           locationList[locID].p1CardHolders[holdID]:insert(curCard)

@@ -23,7 +23,6 @@ function ButtonClass:new(xPos, yPos, xSize, ySize, myGM, functionality)
   --info state
   button.functionality = functionality
   button.gameManager = myGM
-  print(button.gameManager.childObjects)
   button.clickable = true
   self.name = "Submit"
   
@@ -42,7 +41,6 @@ end
 
 function ButtonClass:onClick(myMouse)
   if self.functionality == BUTTONFUNCTIONS.SUBMIT then
-    print(self.gameManager.childObjects)
     self.gameManager:submit()
   end
 end

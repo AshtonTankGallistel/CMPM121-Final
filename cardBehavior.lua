@@ -225,17 +225,13 @@ function HephaestusPrototype:new()
   return HephaestusPrototype
 end
 function HephaestusPrototype:onReveal(gameManager, pNum, myCard, myLocation)
-  print(413)
   myCard:signalEffect()
   --create list of valid cards to affect
   local validCards = {}
   for i = 1, #gameManager.players[pNum].myhand.myCards do table.insert(validCards, i) end
   local affectedCardCount = 0
-  print("Homestuck")
-  print(#validCards)
   --only run until there are no cards left to affect, or 2 cards have been affected
   while #validCards > 0 and affectedCardCount < 2 do
-    print("bluh")
     --select card
     local cardNum = math.random(1,#validCards)
     table.remove(validCards,cardNum)

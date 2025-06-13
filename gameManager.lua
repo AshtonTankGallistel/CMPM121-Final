@@ -33,11 +33,6 @@ function GameManagerClass:new(playerType, hand)
     table.insert(manager.locations, LocationClass:new(10 + i*(450+20),350,460,300))
     table.insert(manager.childObjects, manager.locations[i+1])
   end
-  print(#manager.childObjects)
-  --info on buttons
-  --Moved to main for now, as it's not possible to pass self in from here without bugs
---  manager.submitButton = ButtonClass:new(1050,800,100,50, self, BUTTONFUNCTIONS.SUBMIT)
---  table.insert(manager.childObjects, manager.submitButton)
   
   
   --game stats
@@ -104,7 +99,6 @@ end
 function GameManagerClass:update(dt)
   --A coroutine would be preferable, but I can't figure out how they work in lua before the submission time...
   if self.processingResults and #self.eventQueue > 0 then
-    print("bluh")
     self.processTime = self.processTime - dt
     if self.processTime <= 0 then
       self.processTime = 1
@@ -131,9 +125,6 @@ function GameManagerClass:start()
 end
 
 function GameManagerClass:endSubmission()
---  print(self.player1)
---  print(self.turn)
---  print(self.childObjects)
   self.player1.mana = self.player1.mana - self.player1.spendingMana
   self.player1Hand:resetCardOutlines()
   self.player2.mana = self.player2.mana - self.player2.spendingMana
